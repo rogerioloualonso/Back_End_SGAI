@@ -11,13 +11,13 @@ import org.hibernate.annotations.LazyToOneOption;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 @SuppressWarnings("deprecation")
@@ -34,9 +34,9 @@ public class Docente implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
 	private LocalDateTime createdAt;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
-	private LocalDateTime updateAt;
+	private LocalDateTime updatedAt;
 	
-	@OneToMany(mappedBy = "turma", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "docente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@LazyToOne(LazyToOneOption.NO_PROXY)
 	private List<Turma> turma;
 
@@ -46,7 +46,7 @@ public class Docente implements Serializable {
 	}
 	
 	public Docente(Integer id, String nome, String cpf, String telefone, String matricula, String senha,
-			LocalDateTime createdAt, LocalDateTime updateAt) {
+			LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -55,7 +55,7 @@ public class Docente implements Serializable {
 		this.matricula = matricula;
 		this.senha = senha;
 		this.createdAt = createdAt;
-		this.updateAt = updateAt;
+		this.updatedAt = updatedAt;
 	}
 
 	public Integer getId() {
@@ -115,12 +115,12 @@ public class Docente implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getUpdateAt() {
-		return updateAt;
+	public LocalDateTime getupdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdateAt(LocalDateTime updateAt) {
-		this.updateAt = updateAt;
+	public void setupdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public List<Turma> getTurma() {

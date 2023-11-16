@@ -12,15 +12,15 @@ import org.hibernate.annotations.LazyToOneOption;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @SuppressWarnings("deprecation")
@@ -37,14 +37,12 @@ public class Evento implements Serializable {
 	@JoinColumn(name = "id_turma")
 	@JsonIgnore
 	private Turma turma;
-	private Integer id_evento;
-	private String justificativa;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
 	private LocalDateTime createdAt;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
-	private LocalDateTime updateAt;
+	private LocalDateTime updatedAt;
 	
-	@OneToMany(mappedBy = "presenca", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "evento", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@LazyToOne(LazyToOneOption.NO_PROXY)
 	private List<Presenca> presenca;
 
@@ -52,16 +50,14 @@ public class Evento implements Serializable {
 
 	}
 
-	public Evento(Integer id, Ambiente ambiente, Turma turma, Integer id_evento, String justificativa,
-			LocalDateTime createdAt, LocalDateTime updateAt) {
+	public Evento(Integer id, Ambiente ambiente, Turma turma,
+			LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.ambiente = ambiente;
 		this.turma = turma;
-		this.id_evento = id_evento;
-		this.justificativa = justificativa;
 		this.createdAt = createdAt;
-		this.updateAt = updateAt;
+		this.updatedAt = updatedAt;
 	}
 
 	public Integer getId() {
@@ -88,22 +84,6 @@ public class Evento implements Serializable {
 		this.turma = turma;
 	}
 
-	public Integer getId_evento() {
-		return id_evento;
-	}
-
-	public void setId_evento(Integer id_evento) {
-		this.id_evento = id_evento;
-	}
-
-	public String getJustificativa() {
-		return justificativa;
-	}
-
-	public void setJustificativa(String justificativa) {
-		this.justificativa = justificativa;
-	}
-
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -112,12 +92,12 @@ public class Evento implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getUpdateAt() {
-		return updateAt;
+	public LocalDateTime getupdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdateAt(LocalDateTime updateAt) {
-		this.updateAt = updateAt;
+	public void setupdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public List<Presenca> getPresenca() {

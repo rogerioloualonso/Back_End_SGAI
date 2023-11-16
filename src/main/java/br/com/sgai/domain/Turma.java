@@ -12,17 +12,17 @@ import org.hibernate.annotations.LazyToOneOption;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @SuppressWarnings("deprecation")
@@ -41,9 +41,9 @@ public class Turma implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
 	private LocalDateTime createdAt;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
-	private LocalDateTime updateAt;
+	private LocalDateTime updatedAt;
 	
-	@OneToMany(mappedBy = "evento", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "turma", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@LazyToOne(LazyToOneOption.NO_PROXY)
 	private List<Evento> evento;
 	
@@ -61,7 +61,7 @@ public class Turma implements Serializable {
 	}
 	
 	public Turma(Integer id, Docente docente, String turno, String situacao, String nome, LocalDateTime createdAt,
-			LocalDateTime updateAt) {
+			LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.docente = docente;
@@ -69,7 +69,7 @@ public class Turma implements Serializable {
 		this.situacao = situacao;
 		this.nome = nome;
 		this.createdAt = createdAt;
-		this.updateAt = updateAt;
+		this.updatedAt = updatedAt;
 	}
 	
 	public Integer getId() {
@@ -120,12 +120,12 @@ public class Turma implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getUpdateAt() {
-		return updateAt;
+	public LocalDateTime getupdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdateAt(LocalDateTime updateAt) {
-		this.updateAt = updateAt;
+	public void setupdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public List<Evento> getEvento() {

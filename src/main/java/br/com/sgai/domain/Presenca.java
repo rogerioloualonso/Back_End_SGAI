@@ -11,13 +11,13 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @SuppressWarnings("deprecation")
@@ -41,7 +41,7 @@ public class Presenca implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
 	private LocalDateTime createdAt;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
-	private LocalDateTime updateAt;
+	private LocalDateTime updatedAt;
 
 
 	public Presenca() {
@@ -49,7 +49,7 @@ public class Presenca implements Serializable {
 	}
 
 	public Presenca(Integer id, Evento evento, Discente discente, Date dataEvento, Time horaInicio, Time horaFim,
-			String situacao, LocalDateTime createdAt, LocalDateTime updateAt) {
+			String situacao, LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.evento = evento;
@@ -59,7 +59,7 @@ public class Presenca implements Serializable {
 		this.horaFim = horaFim;
 		this.situacao = situacao;
 		this.createdAt = createdAt;
-		this.updateAt = updateAt;
+		this.updatedAt = updatedAt;
 	}
 
 	public Integer getId() {
@@ -126,12 +126,12 @@ public class Presenca implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getUpdateAt() {
-		return updateAt;
+	public LocalDateTime getupdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdateAt(LocalDateTime updateAt) {
-		this.updateAt = updateAt;
+	public void setupdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	@Override
