@@ -94,7 +94,6 @@ public class Discente implements Serializable {
 		this.telefone = telefone;
 	}
 
-
 	public String getMatricula() {
 		return matricula;
 	}
@@ -119,11 +118,11 @@ public class Discente implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getupdatedAt() {
+	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setupdatedAt(LocalDateTime updatedAt) {
+	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
@@ -133,22 +132,6 @@ public class Discente implements Serializable {
 
 	public void setPresenca(List<Presenca> presenca) {
 		this.presenca = presenca;
-	}
-
-	public List<Turma> getDiscente() {
-		return turmas;
-	}
-
-	public void setDiscente(List<Turma> discente) {
-		this.turmas = discente;
-	}
-
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 	public List<Turma> getTurmas() {

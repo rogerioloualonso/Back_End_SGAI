@@ -120,11 +120,11 @@ public class Turma implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getupdatedAt() {
+	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setupdatedAt(LocalDateTime updatedAt) {
+	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

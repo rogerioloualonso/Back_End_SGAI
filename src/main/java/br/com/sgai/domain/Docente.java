@@ -90,7 +90,6 @@ public class Docente implements Serializable {
 		this.telefone = telefone;
 	}
 
-
 	public String getMatricula() {
 		return matricula;
 	}
@@ -115,11 +114,11 @@ public class Docente implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getupdatedAt() {
+	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setupdatedAt(LocalDateTime updatedAt) {
+	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
