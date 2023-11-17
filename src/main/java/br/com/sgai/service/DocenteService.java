@@ -15,4 +15,8 @@ public class DocenteService {
 	public Docente findAllByCpfAndSenha(String cpf, String senha) {
 		return repo.findAllByCpfAndSenha(cpf, senha);
 	}
+	
+	public Docente findAllByCpf(String cpf) {
+		return repo.findAllByCpf(cpf);
+	}
 }
