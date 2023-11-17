@@ -143,6 +143,22 @@ public class Discente implements Serializable {
 		this.turmas = discente;
 	}
 
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
