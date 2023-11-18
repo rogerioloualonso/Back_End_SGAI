@@ -34,7 +34,6 @@ public class Presenca implements Serializable {
 	@JoinColumn(name = "id_discente")
 	@JsonIgnore
 	private Discente discente;
-	private Date dataEvento;
 	private Time horaInicio;
 	private Time horaFim;
 	private String situacao;
@@ -54,7 +53,6 @@ public class Presenca implements Serializable {
 		this.id = id;
 		this.evento = evento;
 		this.discente = discente;
-		this.dataEvento = dataEvento;
 		this.horaInicio = horaInicio;
 		this.horaFim = horaFim;
 		this.situacao = situacao;
@@ -84,14 +82,6 @@ public class Presenca implements Serializable {
 
 	public void setDiscente(Discente discente) {
 		this.discente = discente;
-	}
-
-	public Date getDataEvento() {
-		return dataEvento;
-	}
-
-	public void setDataEvento(Date dataEvento) {
-		this.dataEvento = dataEvento;
 	}
 
 	public Time getHoraInicio() {
