@@ -69,4 +69,8 @@ public class EventoService {
 		
 		evento = repo.save(evento);
 	}
+	
+	public void delete(Integer id) {
+		repo.deleteById(id);
+	}
 }
