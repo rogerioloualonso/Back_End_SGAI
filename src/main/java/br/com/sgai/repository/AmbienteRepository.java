@@ -10,5 +10,5 @@ import br.com.sgai.domain.Ambiente;
 
 @Repository
 public interface AmbienteRepository extends JpaRepository<Ambiente, Integer>, PagingAndSortingRepository<Ambiente, Integer>{
-		List<Ambiente> findAllById(Integer id);
+		List<Ambiente> findAll();
 }

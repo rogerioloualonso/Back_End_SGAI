@@ -14,7 +14,7 @@ public class AmbienteService {
 	@Autowired
 	private AmbienteRepository repo;
 
-	public List<Ambiente> findAllById(Integer id) {
-		return repo.findAllById(id);
+	public List<Ambiente> findAll() {
+		return repo.findAll();
 	}
 }

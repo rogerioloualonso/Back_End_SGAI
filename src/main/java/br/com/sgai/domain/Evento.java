@@ -2,6 +2,8 @@ package br.com.sgai.domain;
 
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +39,13 @@ public class Evento implements Serializable {
 	@JoinColumn(name = "id_turma")
 	@JsonIgnore
 	private Turma turma;
+	private String situacao;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT-3")
+	private Date dataEvento;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "GMT-3")
+	private Time horaInicio;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "GMT-3")
+	private Time horaFim;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
 	private LocalDateTime createdAt;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'z'", timezone = "GMT-3")
@@ -49,16 +58,33 @@ public class Evento implements Serializable {
 	public Evento() {
 
 	}
+	
 
-	public Evento(Integer id, Ambiente ambiente, Turma turma,
-			LocalDateTime createdAt, LocalDateTime updatedAt) {
+	public Evento(Integer id, Ambiente ambiente, Turma turma, String situacao, Date dataEvento, Time horaInicio,
+			Time horaFim, LocalDateTime createdAt) {
 		super();
 		this.id = id;
 		this.ambiente = ambiente;
 		this.turma = turma;
+		this.situacao = situacao;
+		this.dataEvento = dataEvento;
+		this.horaInicio = horaInicio;
+		this.horaFim = horaFim;
 		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
 	}
+	
+	public Evento(Integer id, String situacao, Date dataEvento, Time horaInicio,
+			Time horaFim, LocalDateTime createdAt) {
+		super();
+		this.id = id;
+		this.situacao = situacao;
+		this.dataEvento = dataEvento;
+		this.horaInicio = horaInicio;
+		this.horaFim = horaFim;
+		this.createdAt = createdAt;
+	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -92,20 +118,52 @@ public class Evento implements Serializable {
 		this.createdAt = createdAt;
 	}
 
-	public LocalDateTime getupdatedAt() {
-		return updatedAt;
-	}
-
-	public void setupdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
 	public List<Presenca> getPresenca() {
 		return presenca;
 	}
 
 	public void setPresenca(List<Presenca> presenca) {
 		this.presenca = presenca;
+	}
+
+	public Date getDataEvento() {
+		return dataEvento;
+	}
+
+	public void setDataEvento(Date dataEvento) {
+		this.dataEvento = dataEvento;
+	}
+
+	public Time getHoraInicio() {
+		return horaInicio;
+	}
+
+	public void setHoraInicio(Time horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public Time getHoraFim() {
+		return horaFim;
+	}
+
+	public void setHoraFim(Time horaFim) {
+		this.horaFim = horaFim;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 
 	@Override
