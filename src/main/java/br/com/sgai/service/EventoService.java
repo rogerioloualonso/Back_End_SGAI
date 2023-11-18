@@ -2,6 +2,7 @@ package br.com.sgai.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,10 @@ public class EventoService {
 		return repo.findAllById(id);
 	}
 	
+	public List<Evento> findByIdDocente(Integer id) {
+		return repo.findAllByIdDocente(id);
+	}
+	
 	public Evento newFromDTO(EventonewDTO objDto) {
 		Evento obj = new Evento(objDto.getId(), objDto.getSituacao(),
 				objDto.getData(), objDto.getHoraInicio(), objDto.getHoraFim(), LocalDateTime.now());
@@ -45,5 +50,23 @@ public class EventoService {
 		newObj.setTurma(turma);
 		
 		return repo.save(newObj);
+	}
+	
+	public void iniciar(int id) {
+		
+		Optional<Evento> eventoOptional = repo.findById(id);
+		Evento evento = eventoOptional.get();
+		evento.setSituacao("Iniciada");
+		
+		evento = repo.save(evento);
+	}
+	
+	public void finalizar(int id) {
+		
+		Optional<Evento> eventoOptional = repo.findById(id);
+		Evento evento = eventoOptional.get();
+		evento.setSituacao("Finalizada");
+		
+		evento = repo.save(evento);
 	}
 }
