@@ -1,7 +1,6 @@
 package br.com.sgai.dto;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 
 import br.com.sgai.domain.Evento;

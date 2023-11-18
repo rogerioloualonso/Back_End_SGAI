@@ -6,7 +6,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.sgai.domain.Discente;
-import br.com.sgai.domain.Docente;
 import br.com.sgai.domain.Presenca;
 import br.com.sgai.domain.Turma;
 

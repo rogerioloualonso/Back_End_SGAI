@@ -1,6 +1,5 @@
 package br.com.sgai.domain;
 
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
