@@ -10,4 +10,5 @@ import br.com.sgai.domain.Discente;
 public interface DiscenteRepository extends JpaRepository<Discente, Integer>, PagingAndSortingRepository<Discente, Integer>{
 		Discente findAllByCpfAndSenha(String cpf, String senha);
 		Discente findAllByCpf(String cpf);
+		Discente findAllById(int id);
 }

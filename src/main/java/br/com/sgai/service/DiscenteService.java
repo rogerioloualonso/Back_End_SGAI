@@ -19,4 +19,8 @@ public class DiscenteService {
 	public Discente findAllByCpf(String cpf) {
 		return repo.findAllByCpf(cpf);
 	}
+	
+	public Discente findAllById(int id) {
+		return repo.findAllById(id);
+	}
 }

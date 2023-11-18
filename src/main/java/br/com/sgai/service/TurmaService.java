@@ -17,4 +17,8 @@ public class TurmaService {
 	public List<Turma> findAllByIdDocente(int id) {
 		return repo.findAllByIdDocente(id);
 	}
+	
+	public List<Turma> findAllByIdDiscente(int id) {
+		return repo.findAllByIdDocente(id);
+	}
 }
