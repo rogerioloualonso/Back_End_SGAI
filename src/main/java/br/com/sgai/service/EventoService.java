@@ -57,6 +57,7 @@ public class EventoService {
 		Optional<Evento> eventoOptional = repo.findById(id);
 		Evento evento = eventoOptional.get();
 		evento.setSituacao("Iniciada");
+		evento.setUpdatedAt(LocalDateTime.now());
 		
 		evento = repo.save(evento);
 	}
@@ -66,6 +67,7 @@ public class EventoService {
 		Optional<Evento> eventoOptional = repo.findById(id);
 		Evento evento = eventoOptional.get();
 		evento.setSituacao("Finalizada");
+		evento.setUpdatedAt(LocalDateTime.now());
 		
 		evento = repo.save(evento);
 	}

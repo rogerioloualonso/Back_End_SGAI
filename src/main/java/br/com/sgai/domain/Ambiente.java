@@ -56,8 +56,19 @@ public class Ambiente implements Serializable {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
-
 	
+	public Ambiente(String nome, String descricao, Integer capacidade, String tipo, String situacao,
+			LocalDateTime createdAt) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.capacidade = capacidade;
+		this.tipo = tipo;
+		this.situacao = situacao;
+		this.createdAt = createdAt;
+	}
+	
+
 	public Integer getId() {
 		return id;
 	}
