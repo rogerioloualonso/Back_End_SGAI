@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.sgai.domain.Ambiente;
+import br.com.sgai.domain.Evento;
 import br.com.sgai.dto.AmbienteDTO;
 import br.com.sgai.dto.AmbienteNewDTO;
 import br.com.sgai.service.AmbienteService;
@@ -62,9 +63,13 @@ public class AmbienteController {
     
     @PostMapping(value = "/atualizar")
 	public Boolean atualizar(@Validated @RequestBody AmbienteNewDTO objDTO) {
+    	
+    	Ambiente aux = service.findById(objDTO.getId());
+    	List<Evento> eventos =  aux.getEventos();
+    	
     	Ambiente ambiente = new Ambiente(objDTO.getId() ,objDTO.getNome(), objDTO.getDescricao(), objDTO.getCapacidade(),
-    			objDTO.getTipo(), objDTO.getSituacao(), objDTO.getCreatedAt(), LocalDateTime.now());
-		//Talvez precise buscar os eventos para atualizar
+    			objDTO.getTipo(), objDTO.getSituacao(), objDTO.getCreatedAt(), LocalDateTime.now(), eventos);
+	
     	service.atualizar(ambiente);
 		return true;
 	}
