@@ -56,6 +56,17 @@ public class Docente implements Serializable {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+	
+	public Docente(String nome, String cpf, String telefone, String matricula, String senha,
+			LocalDateTime createdAt) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.matricula = matricula;
+		this.senha = senha;
+		this.createdAt = createdAt;
+	}
 
 	public Integer getId() {
 		return id;
