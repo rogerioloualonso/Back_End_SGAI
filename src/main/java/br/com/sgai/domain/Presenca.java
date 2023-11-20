@@ -1,7 +1,6 @@
 package br.com.sgai.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -46,17 +45,25 @@ public class Presenca implements Serializable {
 
 	}
 
-	public Presenca(Integer id, Evento evento, Discente discente, Date dataEvento, Time horaInicio, Time horaFim,
+	public Presenca(Integer id, Evento evento, Time horaInicio, Time horaFim,
 			String situacao, LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.evento = evento;
-		this.discente = discente;
 		this.horaInicio = horaInicio;
 		this.horaFim = horaFim;
 		this.situacao = situacao;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+	
+	public Presenca(Discente discente, Evento evento, Time horaInicio, String situacao, LocalDateTime createdAt) {
+		super();
+		this.discente = discente;
+		this.evento = evento;
+		this.horaInicio = horaInicio;
+		this.situacao = situacao;
+		this.createdAt = createdAt;
 	}
 
 	public Integer getId() {
@@ -73,14 +80,6 @@ public class Presenca implements Serializable {
 
 	public void setEvento(Evento evento) {
 		this.evento = evento;
-	}
-
-	public Discente getDiscente() {
-		return discente;
-	}
-
-	public void setDiscente(Discente discente) {
-		this.discente = discente;
 	}
 
 	public Time getHoraInicio() {
@@ -121,6 +120,14 @@ public class Presenca implements Serializable {
 
 	public void setupdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Discente getDiscente() {
+		return discente;
+	}
+
+	public void setDiscente(Discente discente) {
+		this.discente = discente;
 	}
 
 	@Override

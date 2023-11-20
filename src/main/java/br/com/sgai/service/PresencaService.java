@@ -18,8 +18,20 @@ public class PresencaService {
 		return repo.findAllByIdDiscente(id);
 	}
 	
+	public Presenca findAllById(int id) {
+		return repo.findAllById(id);
+	}
+	
 	public void delete(Integer id) {
 		repo.deleteById(id);
+	}
+	
+	public Presenca insert(Presenca newObj) {
+		return repo.save(newObj);
+	}
+	
+	public Presenca update(Presenca newObj) {
+		return repo.save(newObj);
 	}
 	
 }

@@ -11,7 +11,7 @@ import br.com.sgai.domain.Presenca;
 
 @Repository
 public interface PresencaRepository extends JpaRepository<Presenca, Integer>, PagingAndSortingRepository<Presenca, Integer>{
-		List<Presenca> findAllById(Integer id);
+		Presenca findAllById(Integer id);
 		@Query("SELECT t FROM Presenca t WHERE t.discente.id = :id")
 		List<Presenca> findAllByIdDiscente(int id);
 }

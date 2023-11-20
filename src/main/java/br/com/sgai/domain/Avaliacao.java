@@ -49,6 +49,14 @@ public class Avaliacao implements Serializable {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+	
+	public Avaliacao(Evento evento, String justificativa, int rating, LocalDateTime createdAt) {
+		super();
+		this.evento = evento;
+		this.justificativa = justificativa;
+		this.rating = rating;
+		this.createdAt = createdAt;
+	}
 
 	public Integer getId() {
 		return id;
