@@ -18,11 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.sgai.domain.Ambiente;
 import br.com.sgai.domain.Docente;
-import br.com.sgai.domain.Evento;
 import br.com.sgai.domain.Turma;
-import br.com.sgai.dto.AmbienteNewDTO;
 import br.com.sgai.dto.DocenteDTO;
 import br.com.sgai.dto.DocenteNewDTO;
 import br.com.sgai.service.DocenteService;

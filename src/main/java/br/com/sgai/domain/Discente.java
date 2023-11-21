@@ -60,6 +60,34 @@ public class Discente implements Serializable {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+	
+	public Discente(String nome, String cpf, String telefone, String matricula, String senha,
+			LocalDateTime createdAt) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.matricula = matricula;
+		this.senha = senha;
+		this.createdAt = createdAt;
+	}
+	
+	
+
+	public Discente(Integer id, String nome, String cpf, String telefone, String matricula, String senha,
+			LocalDateTime createdAt, LocalDateTime updatedAt, List<Presenca> presenca, List<Turma> turmas) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.matricula = matricula;
+		this.senha = senha;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.presenca = presenca;
+		this.turmas = turmas;
+	}
 
 	public Integer getId() {
 		return id;
