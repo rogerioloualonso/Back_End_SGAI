@@ -1,5 +1,6 @@
 package br.com.sgai.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,27 @@ public class TurmaService {
 	
 	public List<Turma> findAllByIdDiscente(int id) {
 		return repo.findAllByIdDocente(id);
+	}
+	
+	public List<Turma> findAll() {
+		return repo.findAll();
+	}
+	
+	public Turma findById(int id) {
+		return repo.findById(id);
+	}
+	
+	public void delete(Integer id) {
+		repo.deleteById(id);
+	}
+	
+	public Turma insert(Turma newObj) {
+		return repo.save(newObj);
+	}
+	
+	public void atualizar(Turma turma) {
+		
+		turma.setUpdatedAt(LocalDateTime.now());
+		turma = repo.save(turma);
 	}
 }

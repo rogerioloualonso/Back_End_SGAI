@@ -13,4 +13,5 @@ import br.com.sgai.domain.Turma;
 public interface TurmaRepository extends JpaRepository<Turma, Integer>, PagingAndSortingRepository<Turma, Integer>{
 		@Query("SELECT t FROM Turma t WHERE t.docente.id = :id")
 		List<Turma> findAllByIdDocente(int id);
+		Turma findById(int id);
 }

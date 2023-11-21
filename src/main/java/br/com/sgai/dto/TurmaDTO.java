@@ -17,6 +17,7 @@ public class TurmaDTO implements Serializable {
 	private String nome;
 	private String turno;
 	private String situacao;
+	private String nomeDocente;
 	private Docente docente;
 	private List<Evento> evento;
 
@@ -27,6 +28,7 @@ public class TurmaDTO implements Serializable {
 		this.situacao = obj.getSituacao();
 		this.docente = obj.getDocente();
 		this.evento = obj.getEvento();
+		this.nomeDocente = obj.getDocente().getNome();
 	}
 
 	public Integer getId() {
@@ -75,6 +77,14 @@ public class TurmaDTO implements Serializable {
 
 	public void setEvento(List<Evento> evento) {
 		this.evento = evento;
+	}
+
+	public String getNomeDocente() {
+		return nomeDocente;
+	}
+
+	public void setNomeDocente(String nomeDocente) {
+		this.nomeDocente = nomeDocente;
 	}
 
 }

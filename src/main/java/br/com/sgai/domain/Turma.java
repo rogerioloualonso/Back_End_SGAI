@@ -71,6 +71,33 @@ public class Turma implements Serializable {
 		this.updatedAt = updatedAt;
 	}
 	
+	public Turma(Integer id, Docente docente, String turno, String situacao, String nome, LocalDateTime updatedAt,
+			List<Evento> evento, List<Discente> discentes) {
+		super();
+		this.id = id;
+		this.docente = docente;
+		this.turno = turno;
+		this.situacao = situacao;
+		this.nome = nome;
+		this.updatedAt = updatedAt;
+		this.evento = evento;
+		this.discentes = discentes;
+	}
+	
+	public Turma(Integer id, Docente docente, String turno, String situacao, String nome, LocalDateTime createdAt,
+			LocalDateTime updatedAt, List<Evento> evento, List<Discente> discentes) {
+		super();
+		this.id = id;
+		this.docente = docente;
+		this.turno = turno;
+		this.situacao = situacao;
+		this.nome = nome;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.evento = evento;
+		this.discentes = discentes;
+	}
+
 	public Integer getId() {
 		return id;
 	}
