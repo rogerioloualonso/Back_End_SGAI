@@ -16,4 +16,5 @@ public interface EventoRepository extends JpaRepository<Evento, Integer>, Paging
 		@Query("SELECT t FROM Evento t, Turma b WHERE t.turma.id = b.id AND b.docente.id = :id")
 		List<Evento> findAllByIdDocente(int id);
 		Optional<Evento> findById(Integer id);
+		List<Evento> findAll();
 }

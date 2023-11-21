@@ -31,6 +31,10 @@ public class EventoService {
 		return repo.findAllById(id);
 	}
 	
+	public List<Evento> findAllEventos() {
+		return repo.findAll();
+	}
+	
 	public List<Evento> findByIdDocente(Integer id) {
 		return repo.findAllByIdDocente(id);
 	}
@@ -56,7 +60,7 @@ public class EventoService {
 		
 		Optional<Evento> eventoOptional = repo.findById(id);
 		Evento evento = eventoOptional.get();
-		evento.setSituacao("Iniciada");
+		evento.setSituacao("Iniciado");
 		evento.setUpdatedAt(LocalDateTime.now());
 		
 		evento = repo.save(evento);
@@ -66,7 +70,27 @@ public class EventoService {
 		
 		Optional<Evento> eventoOptional = repo.findById(id);
 		Evento evento = eventoOptional.get();
-		evento.setSituacao("Finalizada");
+		evento.setSituacao("Finalizado");
+		evento.setUpdatedAt(LocalDateTime.now());
+		
+		evento = repo.save(evento);
+	}
+	
+	public void aprovar(int id) {
+		
+		Optional<Evento> eventoOptional = repo.findById(id);
+		Evento evento = eventoOptional.get();
+		evento.setSituacao("Aprovado");
+		evento.setUpdatedAt(LocalDateTime.now());
+		
+		evento = repo.save(evento);
+	}
+	
+	public void reprovar(int id) {
+		
+		Optional<Evento> eventoOptional = repo.findById(id);
+		Evento evento = eventoOptional.get();
+		evento.setSituacao("Reprovado");
 		evento.setUpdatedAt(LocalDateTime.now());
 		
 		evento = repo.save(evento);

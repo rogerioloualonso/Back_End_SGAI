@@ -26,6 +26,7 @@ import br.com.sgai.domain.Discente;
 import br.com.sgai.domain.Evento;
 import br.com.sgai.domain.Presenca;
 import br.com.sgai.domain.Turma;
+import br.com.sgai.dto.AvaliacaoDTO;
 import br.com.sgai.dto.EventoDTO;
 import br.com.sgai.dto.EventonewDTO;
 import br.com.sgai.dto.MarcarPresencaDTO;
@@ -74,6 +75,18 @@ public class EventoController {
     @PostMapping(value = "/finalizar/{id}")
 	public Boolean finalizar(@PathVariable int id) {
 		service.finalizar(id);
+		return true;
+	}
+    
+    @PostMapping(value = "/aprovar/{id}")
+	public Boolean aprovar(@PathVariable int id) {
+		service.aprovar(id);
+		return true;
+	}
+    
+    @PostMapping(value = "/reprovar/{id}")
+	public Boolean reprovar(@PathVariable int id) {
+		service.reprovar(id);
 		return true;
 	}
     
@@ -161,5 +174,28 @@ public class EventoController {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(objAvaliacao.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+    
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<EventoDTO>> getAll() {
+    	List<Evento> evento = service.findAllEventos();
+    	List<EventoDTO> listDTO = evento.stream()
+                .sorted(Comparator.comparing(Evento::getDataEvento).reversed())
+                .map(obj -> new EventoDTO(obj))
+                .collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
+    }
+    
+    @GetMapping(value = "/avaliacao/{id}")
+    public ResponseEntity<List<AvaliacaoDTO>> getAvaliacaoByEvento(@PathVariable int id) {
+    	List<Evento> listEvento = service.findAll(id);
+    	Evento evento = listEvento.get(0);
+    	
+    	List<Avaliacao> avaliacao = evento.getAvaliacao();
+    	
+    	List<AvaliacaoDTO> listDTO = avaliacao.stream()
+                .map(obj -> new AvaliacaoDTO(obj))
+                .collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
+    }
 
 }

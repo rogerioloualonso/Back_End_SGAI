@@ -53,6 +53,10 @@ public class Evento implements Serializable {
 	@OneToMany(mappedBy = "evento", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@LazyToOne(LazyToOneOption.NO_PROXY)
 	private List<Presenca> presenca;
+	
+	@OneToMany(mappedBy = "evento", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@LazyToOne(LazyToOneOption.NO_PROXY)
+	private List<Avaliacao> avaliacao;
 
 	public Evento() {
 
@@ -164,6 +168,16 @@ public class Evento implements Serializable {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
+
+	public List<Avaliacao> getAvaliacao() {
+		return avaliacao;
+	}
+
+
+	public void setAvaliacao(List<Avaliacao> avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+
 
 	@Override
 	public boolean equals(Object o) {
