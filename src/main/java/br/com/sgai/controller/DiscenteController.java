@@ -27,6 +27,7 @@ import br.com.sgai.dto.DiscenteNewDTO;
 import br.com.sgai.dto.DocenteDTO;
 import br.com.sgai.dto.DocenteNewDTO;
 import br.com.sgai.service.DiscenteService;
+import br.com.sgai.service.TurmaService;
 
 @RestController
 @RequestMapping(value = "/discente")
@@ -34,6 +35,9 @@ public class DiscenteController {
     
     @Autowired
     DiscenteService discenteService;
+    
+    @Autowired
+    TurmaService turmaService;
     
     @PostMapping
 	public ResponseEntity<Void> insert(@Validated @RequestBody DiscenteNewDTO objDTO) {
@@ -59,6 +63,17 @@ public class DiscenteController {
         Discente discente = discenteService.findAllById(id);
         DiscenteDTO dto =  new DiscenteDTO(discente);
 		return ResponseEntity.ok().body(dto);
+    }
+    
+    @GetMapping(value = "/byTurma/{id}")
+    public ResponseEntity<List<DiscenteDTO>> getDocenteByTurma(@PathVariable int id) {
+        Turma turma = turmaService.findById(id);
+        List<Discente> discente = turma.getDiscentes();
+        List<DiscenteDTO> listDTO = discente.stream()
+                .sorted(Comparator.comparing(Discente::getNome))
+                .map(obj -> new DiscenteDTO(obj))
+                .collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
     }
     
     @GetMapping(value = "/all")

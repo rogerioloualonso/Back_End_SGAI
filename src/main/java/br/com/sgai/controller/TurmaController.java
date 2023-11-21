@@ -2,7 +2,9 @@ package br.com.sgai.controller;
 
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +24,7 @@ import br.com.sgai.domain.Discente;
 import br.com.sgai.domain.Docente;
 import br.com.sgai.domain.Evento;
 import br.com.sgai.domain.Turma;
+import br.com.sgai.dto.DiscenteNewDTO;
 import br.com.sgai.dto.TurmaDTO;
 import br.com.sgai.dto.TurmaNewDTO;
 import br.com.sgai.service.DiscenteService;
@@ -107,5 +110,64 @@ public class TurmaController {
     	turmaService.atualizar(turma);
 		return true;
 	}
+    
+    @PostMapping(value = "/incluir")
+	public Boolean incluirDiscenteTurma(@Validated @RequestBody DiscenteNewDTO objDTO) {
+    	
+    	Discente discente = discenteService.findAllById(objDTO.getId());
+    	Turma turma = turmaService.findById(objDTO.getIdTurma());
+    	
+    	List<Discente> listaDiscente = turma.getDiscentes();
+    	
+    	for (Discente aux : listaDiscente) {
+    	    if(discente.getId() == aux.getId()) {
+    	    	return false;
+    	    }
+    	}
+    	
+    	turma.getDiscentes().add(discente);
+    	discente.getTurmas().add(turma);
+    	
+    	turmaService.atualizar(turma);
+    	discenteService.atualizar(discente);
+    	
+		return true;
+	}
+    
+    @PostMapping(value = "/remover")
+    public Boolean removerDiscenteTurma(@Validated @RequestBody DiscenteNewDTO objDTO) {
+        Discente discente = discenteService.findAllById(objDTO.getId());
+        Turma turma = turmaService.findById(objDTO.getIdTurma());
+
+        List<Discente> discentesList = new ArrayList<>(turma.getDiscentes());
+        int i = 0;
+        for (Discente aux : discentesList) {
+            if (discente.equals(aux)) {
+            	discentesList.remove(i);
+                break;
+            }
+            i++;
+        }
+
+        List<Turma> turmasList = new ArrayList<>(discente.getTurmas());
+        int j = 0;
+        for (Turma aux : turmasList) {
+            if (turma.equals(aux)) {
+            	turmasList.remove(j);
+                break;
+            }
+            j++;
+        }
+        
+        turma.setDiscentes(discentesList);
+        discente.setTurmas(turmasList);
+
+        turmaService.atualizar(turma);
+        discenteService.atualizar(discente);
+
+        return true;
+    }
+
+
     
 }

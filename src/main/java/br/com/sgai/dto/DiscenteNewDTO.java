@@ -6,6 +6,7 @@ public class DiscenteNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
+	private int idTurma;
 	private String nome;
 	private String cpf;
 	private String telefone;
@@ -59,6 +60,14 @@ public class DiscenteNewDTO implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public int getIdTurma() {
+		return idTurma;
+	}
+
+	public void setIdTurma(int idTurma) {
+		this.idTurma = idTurma;
 	}
 
 }
