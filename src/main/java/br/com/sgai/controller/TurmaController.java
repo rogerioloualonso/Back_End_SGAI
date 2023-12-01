@@ -4,7 +4,6 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,6 +26,7 @@ import br.com.sgai.domain.Turma;
 import br.com.sgai.dto.DiscenteNewDTO;
 import br.com.sgai.dto.TurmaDTO;
 import br.com.sgai.dto.TurmaNewDTO;
+import br.com.sgai.enums.Situacao;
 import br.com.sgai.service.DiscenteService;
 import br.com.sgai.service.DocenteService;
 import br.com.sgai.service.TurmaService;
@@ -49,7 +49,7 @@ public class TurmaController {
     	
     	Docente docente = docenteService.findById(objDTO.getIdDocente());
     	
-    	Turma turma = new Turma(objDTO.getId(), docente, objDTO.getTurno(), "Ativa", objDTO.getNome(),
+    	Turma turma = new Turma(objDTO.getId(), docente, objDTO.getTurno(), Situacao.ATIVA.toString(), objDTO.getNome(),
     			LocalDateTime.now(), null, null, null);
 		
     	Turma obj = turmaService.insert(turma);

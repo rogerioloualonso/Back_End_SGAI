@@ -31,6 +31,7 @@ import br.com.sgai.dto.EventoDTO;
 import br.com.sgai.dto.EventonewDTO;
 import br.com.sgai.dto.MarcarPresencaDTO;
 import br.com.sgai.dto.PresencaDiscenteDTO;
+import br.com.sgai.enums.Situacao;
 import br.com.sgai.service.AvaliacaoService;
 import br.com.sgai.service.DiscenteService;
 import br.com.sgai.service.EventoService;
@@ -144,7 +145,7 @@ public class EventoController {
     	LocalTime localTime = LocalTime.now();
         Time time = Time.valueOf(localTime);
         
-    	Presenca presenca = new Presenca(discente, evento.get(0), time, "Iniciada", LocalDateTime.now());
+    	Presenca presenca = new Presenca(discente, evento.get(0), time, Situacao.INICIADA.toString(), LocalDateTime.now());
     	
     	Presenca obj = PresencaService.insert(presenca);
 		
@@ -161,7 +162,7 @@ public class EventoController {
         Time time = Time.valueOf(localTime);
         
     	presenca.setHoraFim(time);
-    	presenca.setSituacao("Finalizada");
+    	presenca.setSituacao(Situacao.FINALIZADA.toString());
     	
     	Presenca presencaUpdate = PresencaService.update(presenca);
     	

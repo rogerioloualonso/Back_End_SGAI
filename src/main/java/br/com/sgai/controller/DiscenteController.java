@@ -19,13 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.sgai.domain.Discente;
-import br.com.sgai.domain.Docente;
 import br.com.sgai.domain.Presenca;
 import br.com.sgai.domain.Turma;
 import br.com.sgai.dto.DiscenteDTO;
 import br.com.sgai.dto.DiscenteNewDTO;
-import br.com.sgai.dto.DocenteDTO;
-import br.com.sgai.dto.DocenteNewDTO;
 import br.com.sgai.service.DiscenteService;
 import br.com.sgai.service.TurmaService;
 

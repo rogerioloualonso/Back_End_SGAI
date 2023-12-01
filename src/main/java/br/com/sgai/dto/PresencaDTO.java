@@ -26,9 +26,9 @@ public class PresencaDTO implements Serializable {
 		this.id = obj.getId();
 		this.nomeDiscente = obj.getDiscente().getNome();
 		this.matricula = obj.getDiscente().getMatricula();
-		this.inicio = sdf.format(obj.getHoraInicio()) + "h";
+		this.inicio = obj.getHoraInicio() != null ? sdf.format(obj.getHoraInicio()) + "h" : "";
 		this.situacao = obj.getSituacao();
-		this.fim = sdf.format(obj.getHoraFim()) + "h";
+		this.fim = obj.getHoraFim() != null ? sdf.format(obj.getHoraFim()) + "h" : "";
 	}
 
 	public Integer getId() {

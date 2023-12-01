@@ -11,6 +11,7 @@ import br.com.sgai.domain.Ambiente;
 import br.com.sgai.domain.Evento;
 import br.com.sgai.domain.Turma;
 import br.com.sgai.dto.EventonewDTO;
+import br.com.sgai.enums.Situacao;
 import br.com.sgai.repository.AmbienteRepository;
 import br.com.sgai.repository.EventoRepository;
 import br.com.sgai.repository.TurmaRepository;
@@ -60,7 +61,7 @@ public class EventoService {
 		
 		Optional<Evento> eventoOptional = repo.findById(id);
 		Evento evento = eventoOptional.get();
-		evento.setSituacao("Iniciado");
+		evento.setSituacao(Situacao.INICIADO.toString());
 		evento.setUpdatedAt(LocalDateTime.now());
 		
 		evento = repo.save(evento);
@@ -70,7 +71,7 @@ public class EventoService {
 		
 		Optional<Evento> eventoOptional = repo.findById(id);
 		Evento evento = eventoOptional.get();
-		evento.setSituacao("Finalizado");
+		evento.setSituacao(Situacao.FINALIZADO.toString());
 		evento.setUpdatedAt(LocalDateTime.now());
 		
 		evento = repo.save(evento);
@@ -80,7 +81,7 @@ public class EventoService {
 		
 		Optional<Evento> eventoOptional = repo.findById(id);
 		Evento evento = eventoOptional.get();
-		evento.setSituacao("Aprovado");
+		evento.setSituacao(Situacao.APROVADO.toString());
 		evento.setUpdatedAt(LocalDateTime.now());
 		
 		evento = repo.save(evento);
@@ -90,7 +91,7 @@ public class EventoService {
 		
 		Optional<Evento> eventoOptional = repo.findById(id);
 		Evento evento = eventoOptional.get();
-		evento.setSituacao("Reprovado");
+		evento.setSituacao(Situacao.REPROVADO.toString());
 		evento.setUpdatedAt(LocalDateTime.now());
 		
 		evento = repo.save(evento);
