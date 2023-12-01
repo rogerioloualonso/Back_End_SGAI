@@ -23,6 +23,12 @@ public class AuthController {
 
     @PostMapping(value = "/discente")
     public boolean authDiscente(@RequestBody LoginDTO credentials) {
+    	try {
+			new Thread();
+			Thread.sleep(700);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
         Discente discente = discenteService.findAllByCpfAndSenha(credentials.getCpf(), credentials.getSenha());
         if(discente == null) {
         	return false;
@@ -33,6 +39,12 @@ public class AuthController {
     
     @PostMapping(value = "/docente")
     public boolean authDocente(@RequestBody LoginDTO credentials) {
+    	try {
+			new Thread();
+			Thread.sleep(700);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
         Docente docente = docenteService.findAllByCpfAndSenha(credentials.getCpf(), credentials.getSenha());
         if(docente == null) {
         	return false;
