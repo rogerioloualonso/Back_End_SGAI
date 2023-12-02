@@ -17,6 +17,7 @@ public class DocenteDTO implements Serializable {
 	private String cpf;
 	private String telefone;
 	private String matricula;
+	private String senha;
 	private List<Turma> turma;
 
 	public DocenteDTO(Docente obj) {
@@ -26,6 +27,7 @@ public class DocenteDTO implements Serializable {
 		this.telefone = obj.getTelefone();
 		this.matricula = obj.getMatricula();
 		this.turma = obj.getTurma();
+		this.senha = obj.getSenha();
 	}
 
 	public Integer getId() {
@@ -74,6 +76,14 @@ public class DocenteDTO implements Serializable {
 
 	public void setTurma(List<Turma> turma) {
 		this.turma = turma;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 

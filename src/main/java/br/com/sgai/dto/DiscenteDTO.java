@@ -18,6 +18,7 @@ public class DiscenteDTO implements Serializable {
 	private String cpf;
 	private String telefone;
 	private String matricula;
+	private String senha;
 	private List<Presenca> presenca;
 	private List<Turma> turma;
 
@@ -29,6 +30,7 @@ public class DiscenteDTO implements Serializable {
 		this.matricula = obj.getMatricula();
 		this.presenca = obj.getPresenca();
 		this.turma = obj.getTurmas();
+		this.senha= obj.getSenha();	
 	}
 
 	public Integer getId() {
@@ -86,6 +88,13 @@ public class DiscenteDTO implements Serializable {
 	public void setTurma(List<Turma> turma) {
 		this.turma = turma;
 	}
-	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 }
