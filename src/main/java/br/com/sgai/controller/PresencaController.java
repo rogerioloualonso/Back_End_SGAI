@@ -29,6 +29,13 @@ public class PresencaController {
 		return ResponseEntity.ok().body(listDTO);
     }
     
+    @GetMapping(value = "/byEvento/{id}")
+    public ResponseEntity<List<PresencaDTO>> getPresencasByIdEvento(@PathVariable int id) {
+        List<Presenca> presenca = Service.findAllByIdEvento(id);
+        List<PresencaDTO> listDTO = presenca.stream().map(obj -> new PresencaDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
+    }
+    
     @DeleteMapping(value = "/excluir/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
     	Service.delete(id);

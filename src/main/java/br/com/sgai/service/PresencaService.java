@@ -18,6 +18,10 @@ public class PresencaService {
 		return repo.findAllByIdDiscente(id);
 	}
 	
+	public List<Presenca> findAllByIdEvento(int id) {
+		return repo.findAllByIdEvento(id);
+	}
+	
 	public Presenca findAllById(int id) {
 		return repo.findAllById(id);
 	}

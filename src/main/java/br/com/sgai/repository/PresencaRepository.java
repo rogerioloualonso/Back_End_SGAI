@@ -14,4 +14,6 @@ public interface PresencaRepository extends JpaRepository<Presenca, Integer>, Pa
 		Presenca findAllById(Integer id);
 		@Query("SELECT t FROM Presenca t WHERE t.discente.id = :id")
 		List<Presenca> findAllByIdDiscente(int id);
+		@Query("SELECT t FROM Presenca t WHERE t.evento.id = :id")
+		List<Presenca> findAllByIdEvento(int id);
 }
