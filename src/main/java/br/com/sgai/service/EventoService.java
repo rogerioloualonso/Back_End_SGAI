@@ -48,8 +48,8 @@ public class EventoService {
 	
 	public Evento insert(Evento newObj, int idAmbiente, int idTurma) {
 		
-		Turma turma = repositoryTurma.getById(idTurma);
-		Ambiente ambiente  = repositoryAmbiente.getById(idTurma);
+		Turma turma = repositoryTurma.findById(idTurma);
+		Ambiente ambiente  = repositoryAmbiente.findById(idAmbiente);
 		
 		newObj.setAmbiente(ambiente);
 		newObj.setTurma(turma);
